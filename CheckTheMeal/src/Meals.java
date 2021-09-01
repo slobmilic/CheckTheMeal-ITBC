@@ -1,23 +1,38 @@
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Meals {
 
-    List<Meal>meals;
+    private List<Meal> meals;
 
     public List<Meal> getMeals() {
         return meals;
     }
 
     public boolean add(Meal m){
+        for (Meal p : meals){
+            if (p.equals(m)){
+                meals.add(m);
+                return true;
+            }
+        }
         return false;
     }
 
     public void remove(Meal m){
-
+        for (Meal p : meals){
+            meals.remove(m);
+        }
     }
 
     public List<Meal> search(String s){
-        return null;
+        List<Meal> tmp = new ArrayList<>();
+        for (Meal p : meals){
+            if (p.getName().contains(s))
+                tmp.add(p);
+        }
+        return tmp;
     }
 
     public List<Meal> search(List<Nutriment> nutriment){

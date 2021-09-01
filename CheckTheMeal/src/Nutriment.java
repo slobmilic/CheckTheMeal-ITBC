@@ -18,12 +18,27 @@ public abstract class Nutriment extends Grocery {
     }
 
     public void setAll(Double weight, Double kcal, Double proteins, Double carbohydrates, Double fats, Double fiber) {
+
+        if (weight != null)
         this.weight = weight;
+        if (kcal != null)
         this.kcal = kcal;
+        if (proteins != null)
         this.proteins = proteins;
+        if (carbohydrates != null)
         this.carbohydrates = carbohydrates;
+        if (fats != null)
         this.fats = fats;
+        if (fiber != null)
         this.fiber = fiber;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
     }
 
     public Double getProteins() {
@@ -48,23 +63,23 @@ public abstract class Nutriment extends Grocery {
     }
 
     public Double getTotalProteins(){
-        return 0.0;
+        return weight / 100 * proteins;
     }
 
     public Double getTotalFats(){
-        return 0.0;
+        return weight / 100 * fats;
     }
 
     public Double getTotalFiber(){
-        return 0.0;
+        return weight / 100 * fiber;
     }
 
     public Double getTotalCarbohydrates(){
-        return 0.0;
+        return weight / 100 * carbohydrates;
     }
 
     public Double getTotalKcal(){
-        return 0.0;
+        return weight / 100 * kcal;
     }
 
     @Override
@@ -80,7 +95,14 @@ public abstract class Nutriment extends Grocery {
     }
 
     public String totalNutrientTable(){
-        return null;
+        return "Company: " + super.getCompany() + "\n"
+                + "Name: " + super.getName() + "\n"
+                + "Weight : " + weight + "\n"
+                + "Kcal: " + getTotalKcal() + "\n"
+                + "Proteins: " + getTotalProteins() + "\n"
+                + "Carbohydrates: " + getTotalCarbohydrates() + "\n"
+                + "Fats: " + getTotalFats() + "\n"
+                + "Fiber: " + getTotalFiber();
     }
 
 
