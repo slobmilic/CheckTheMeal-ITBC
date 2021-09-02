@@ -6,6 +6,10 @@ public class Meals {
 
     private List<Meal> meals;
 
+    public Meals(List<Meal> meals) {
+        this.meals = meals;
+    }
+
     public List<Meal> getMeals() {
         return meals;
     }
@@ -41,6 +45,7 @@ public class Meals {
             for (Nutriment n : nutriment){
                 if (p.getNutriments().contains(n)){
                     tmp.add(p);
+                    break;
                 }
             }
         }

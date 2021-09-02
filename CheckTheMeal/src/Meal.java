@@ -10,6 +10,7 @@ public class Meal implements Energy{
     private String name;
 
     public Meal(List<Nutriment> nutriments, String name) {
+        id = UUID.randomUUID();
         this.nutriments = nutriments;
         this.name = name;
     }
@@ -27,13 +28,18 @@ public class Meal implements Energy{
     }
 
     public void add(Nutriment n){
+        boolean isFound = false;
         for (Nutriment p : nutriments){
             if (p.equals(n)){
                 p.setWeight(p.getWeight() + n.getWeight());
-            } else {
-                nutriments.add(n);
+                isFound = true;
+                break;
             }
         }
+        if (!isFound){
+            nutriments.add(n);
+        }
+
     }
 
     public void remove(Nutriment n){

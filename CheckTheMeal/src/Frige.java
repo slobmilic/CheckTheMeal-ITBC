@@ -1,16 +1,25 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Frige {
 
     private List<Nutriment>nutriments;
 
+    public Frige(List<Nutriment> nutriments) {
+        this.nutriments = nutriments;
+    }
+
     public void add(Nutriment n){
+        boolean isFound = false;
         for (Nutriment p : nutriments){
             if (p.equals(n)){
                 p.setWeight(p.getWeight() + n.getWeight());
-            } else {
-                nutriments.add(n);
+                isFound = true;
+                break;
             }
+        }
+        if (!isFound){
+            nutriments.add(n);
         }
     }
 
