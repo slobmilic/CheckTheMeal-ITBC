@@ -36,15 +36,34 @@ public class Meals {
     }
 
     public List<Meal> search(List<Nutriment> nutriment){
-        return null;
+        List<Meal> tmp = new ArrayList<>();
+        for (Meal p : meals){
+            for (Nutriment n : nutriment){
+                if (p.getNutriments().contains(n)){
+                    tmp.add(p);
+                }
+            }
+        }
+
+        return tmp;
     }
 
     public List<Meal> search(double kcal){
-        return null;
+        List<Meal> tmp = new ArrayList<>();
+        for (Meal p : meals){
+            if (p.getKcal() < kcal){
+                tmp.add(p);
+            }
+        }
+        return tmp;
     }
 
     @Override
     public String toString() {
-        return "[" + meals.get(0).getId() + "]" + " | Name: " + meals.get(0).getName();
+        for (Meal p : meals){
+            return "[" + p.getId() + "]" + " | Name: " + p.getName() + "\n";
+        }
+        return null;
+       // return "[" + meals.get(0).getId() + "]" + " | Name: " + meals.get(0).getName();
     }
 }

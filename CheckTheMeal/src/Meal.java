@@ -22,6 +22,10 @@ public class Meal implements Energy{
         return name;
     }
 
+    public List<Nutriment> getNutriments() {
+        return nutriments;
+    }
+
     public void add(Nutriment n){
         for (Nutriment p : nutriments){
             if (p.equals(n)){
