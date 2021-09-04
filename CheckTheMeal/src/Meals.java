@@ -15,19 +15,13 @@ public class Meals {
     }
 
     public boolean add(Meal m){
-        for (Meal p : meals){
-            if (p.equals(m)){
-                meals.add(m);
-                return true;
-            }
-        }
-        return false;
+        if (!meals.contains(m))
+            meals.add(m);
+        return true;
     }
 
     public void remove(Meal m){
-        for (Meal p : meals){
             meals.remove(m);
-        }
     }
 
     public List<Meal> search(String s){
@@ -42,11 +36,8 @@ public class Meals {
     public List<Meal> search(List<Nutriment> nutriment){
         List<Meal> tmp = new ArrayList<>();
         for (Meal p : meals){
-            for (Nutriment n : nutriment){
-                if (p.getNutriments().contains(n)){
-                    tmp.add(p);
-                    break;
-                }
+            if (nutriment.containsAll(p.getNutriments())) {
+                tmp.add(p);
             }
         }
 
@@ -65,10 +56,13 @@ public class Meals {
 
     @Override
     public String toString() {
-        for (Meal p : meals){
-            return "[" + p.getId() + "]" + " | Name: " + p.getName() + "\n";
+       StringBuilder x = new StringBuilder();
+
+       for (Meal p : meals){
+            x.append("[").append(p.getId()).append("]").append(" | Name: ").append(p.getName()).append("\n");
         }
-        return null;
+
+        return x.toString();
        // return "[" + meals.get(0).getId() + "]" + " | Name: " + meals.get(0).getName();
     }
 }

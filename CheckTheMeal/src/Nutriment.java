@@ -1,4 +1,7 @@
+import java.text.DecimalFormat;
+
 public abstract class Nutriment extends Grocery {
+    private static DecimalFormat df = new DecimalFormat("0.00");
 
     private Double weight;
     private Double kcal;
@@ -63,23 +66,23 @@ public abstract class Nutriment extends Grocery {
     }
 
     public Double getTotalProteins(){
-        return weight / 100 * proteins;
+        return Double.valueOf(df.format(weight / 100 * proteins));
     }
 
     public Double getTotalFats(){
-        return weight / 100 * fats;
+        return Double.valueOf(df.format(weight / 100 * fats));
     }
 
     public Double getTotalFiber(){
-        return weight / 100 * fiber;
+        return Double.valueOf(df.format(weight / 100 * fiber));
     }
 
     public Double getTotalCarbohydrates(){
-        return weight / 100 * carbohydrates;
+        return Double.valueOf(df.format(weight / 100 * carbohydrates));
     }
 
     public Double getTotalKcal(){
-        return weight / 100 * kcal;
+        return Double.valueOf(df.format(weight / 100.00 * kcal));
     }
 
     @Override
@@ -91,7 +94,7 @@ public abstract class Nutriment extends Grocery {
                 + "Proteins: " + proteins + "%" + "\n"
                 + "Carbohydrates: " + carbohydrates + "%" + "\n"
                 + "Fats: " + fats + "%" + "\n"
-                + "Fiber: " + fiber + "%";
+                + "Fiber: " + fiber + "%" + "\n";
     }
 
     public String totalNutrientTable(){

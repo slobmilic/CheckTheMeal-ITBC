@@ -9,6 +9,10 @@ public class Frige {
         this.nutriments = nutriments;
     }
 
+    public Frige() {
+        nutriments = new ArrayList<>();
+    }
+
     public void add(Nutriment n){
         boolean isFound = false;
         for (Nutriment p : nutriments){
@@ -24,9 +28,7 @@ public class Frige {
     }
 
     public void remove(Nutriment n){
-        for (Nutriment p : nutriments){
-            nutriments.remove(n);
-        }
+        nutriments.remove(n);
     }
 
     public void remove(Nutriment n, double weight){

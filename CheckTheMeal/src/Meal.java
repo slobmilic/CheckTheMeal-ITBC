@@ -43,9 +43,7 @@ public class Meal implements Energy{
     }
 
     public void remove(Nutriment n){
-        for (Nutriment p : nutriments){
-            nutriments.remove(n);
-        }
+        nutriments.remove(n);
     }
 
     public void remove(Nutriment n, double weight){
