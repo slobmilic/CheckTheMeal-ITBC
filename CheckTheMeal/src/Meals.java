@@ -24,6 +24,16 @@ public class Meals {
             meals.remove(m);
     }
 
+    public Meal searchMeal(String s){
+        Meal n = new Meal();
+        for (Meal m : meals){
+            if (m.getName().equals(s))
+                n = m;
+            break;
+        }
+        return n;
+    }
+
     public List<Meal> search(String s){
         List<Meal> tmp = new ArrayList<>();
         for (Meal p : meals){

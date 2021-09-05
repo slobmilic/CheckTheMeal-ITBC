@@ -1,9 +1,12 @@
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Meal implements Energy{
+
+    private static DecimalFormat df = new DecimalFormat("0.00");
 
     private UUID id;
     private List<Nutriment> nutriments;
@@ -13,6 +16,9 @@ public class Meal implements Energy{
         id = UUID.randomUUID();
         this.nutriments = nutriments;
         this.name = name;
+    }
+
+    public Meal() {
     }
 
     public UUID getId() {
@@ -41,6 +47,13 @@ public class Meal implements Energy{
         }
 
     }
+    public Nutriment getMealNutriment(String s){
+        for (Nutriment n : nutriments){
+            if (n.getName().equals(s))
+                return n;
+        }
+        return null;
+    }
 
     public void remove(Nutriment n){
         nutriments.remove(n);
@@ -60,7 +73,7 @@ public class Meal implements Energy{
         for (Nutriment p : nutriments){
             sub += p.getTotalKcal();
         }
-        return sub;
+        return Double.parseDouble(df.format(sub));
     }
 
     public double getProteins(){
@@ -68,7 +81,7 @@ public class Meal implements Energy{
         for (Nutriment p : nutriments){
             sub += p.getTotalProteins();
         }
-        return sub;
+        return Double.parseDouble(df.format(sub));
     }
 
     public double getCarbohydrates(){
@@ -76,7 +89,7 @@ public class Meal implements Energy{
         for (Nutriment p : nutriments){
             sub += p.getTotalCarbohydrates();
         }
-        return sub;
+        return Double.parseDouble(df.format(sub));
     }
 
     public double getFats(){
@@ -84,7 +97,7 @@ public class Meal implements Energy{
         for (Nutriment p : nutriments){
             sub += p.getTotalFats();
         }
-        return sub;
+        return Double.parseDouble(df.format(sub));
     }
 
     public double getFiber(){
@@ -92,7 +105,16 @@ public class Meal implements Energy{
         for (Nutriment p : nutriments){
             sub += p.getTotalFiber();
         }
-        return sub;
+        return Double.parseDouble(df.format(sub));
+    }
+
+    public String totalMealNutrientTable(){
+        return "Name: " + name + "\n"
+                + "Kcal: " + getKcal() + "\n"
+                + "Proteins: " + getProteins() + "\n"
+                + "Carbohydrates: " + getCarbohydrates() + "\n"
+                + "Fats: " + getFats() + "\n"
+                + "Fiber: " + getFiber();
     }
 
     @Override

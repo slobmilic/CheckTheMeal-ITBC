@@ -36,6 +36,7 @@ public abstract class Nutriment extends Grocery {
         this.fiber = fiber;
     }
 
+
     public Double getWeight() {
         return weight;
     }

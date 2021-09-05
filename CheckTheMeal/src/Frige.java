@@ -13,6 +13,14 @@ public class Frige {
         nutriments = new ArrayList<>();
     }
 
+    public Nutriment getNutriment(String s){
+        for (Nutriment n : nutriments){
+            if (n.getName().equals(s))
+                return n;
+        }
+        return null;
+    }
+
     public void add(Nutriment n){
         boolean isFound = false;
         for (Nutriment p : nutriments){
