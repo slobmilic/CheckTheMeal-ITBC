@@ -18,7 +18,6 @@ public abstract class Grocery implements Energy {
         return company;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
